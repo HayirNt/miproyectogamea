@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Integral de Gestión Municipal - GAMEA</title>
+
+    <!-- Enlaces de emergencia de Bootstrap oficiales desde internet -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #f3f4f6 !important;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-y: auto !important;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor estructural maestro */
+        .pantalla-contenedor {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* MENÚ LATERAL AZUL FIJO */
+        .barra-lateral {
+            width: 260px;
+            min-width: 260px;
+            max-width: 260px;
+            background-color: #003366;
+            color: #ffffff;
+            height: 100vh;
+            position: fixed; /* Clavada en pantalla */
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        /* CONTENEDOR DE CONTENIDO TOTALMENTE LIBERADO */
+        .contenido-principal {
+         flex-grow: 1;
+         margin-left: 260px; /* Coincide exactamente con el ancho de tu barra lateral */
+         padding: 30px; 
+         min-height: 100vh;
+         box-sizing: border-box;
+         width: calc(100% - 260px);
+         background-color: #f8fafc;
+        }
+
+        /* Estilos del Menú */
+        .menu-seccion-titulo {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+            padding: 15px 20px 5px 20px;
+        }
+
+        .opcion-menu {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 11px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .opcion-menu:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .opcion-menu.activo {
+            color: #ffffff;
+            background-color: #0b4582;
+            border-left: 4px solid #ffb300;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pantalla-contenedor">
+        
+        <!-- BARRA LATERAL AZUL -->
+        <nav class="barra-lateral">
+            <!-- Logo corporativo -->
+            <div class="p-4" style="display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #0c437a;">
+    
+    <!-- Espacio para la imagen / escudo -->
+    <img src="http://localhost/img/logo2026.png" style="height: 65px; width: auto; object-fit: contain; flex-shrink: 0;">
+    
+    <!-- Bloque de texto -->
+    <div>
+        <div style="font-size: 10px; color: #ffb300; font-weight: 700; line-height: 1.1;">GOBIERNO AUTÓNOMO MUNICIPAL</div>
+        <div style="font-size: 20px; font-weight: 800; color: #ffffff; margin: 2px 0 0 0; letter-spacing: 0.5px;">EL ALTO</div>
+       
+    </div>
+
+</div>
+<br>
+            <!-- Perfil del Administrador -->
+          
+              <a href="http://localhost/logout" 
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+              class="p-3 m-3 rounded" 
+               style="background-color: rgba(255,255,255,0.05); display: flex; align-items: center; text-decoration: none; cursor: pointer;">
+              
+              <div style="width: 32px; height: 32px; background-color: #ffb300; color: #111827; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex-shrink: 0;">
+              AD
+          </div>
+             <div style="margin-left: 10px;">
+        <div style="font-size: 12px; font-weight: 700; color: #ffffff; line-height: 1;">Administrador</div>
+        <span style="font-size: 10px; color: rgba(255,255,255,0.4);">admin@gmail.com</span>
+             </div>
+          </a>
+
+<!-- Formulario oculto obligatorio para Laravel -->
+
+<!-- <form id="logout-form" action="http://localhost/logout" method="POST" style="display: none;">
+    <input type="hidden" name="_token" value="jqzn08B5tdlzIyQ7AOjb8uyUjQgkrZoGUTUoMGyn" autocomplete="off"></form>-->
+
+
+            
+                        <!-- Navegación Estructurada del GAMEA con Desglose -->
+            <div style="padding: 10px 0;">
+                <div class="menu-seccion-titulo">Principal</div>
+                <a href="http://localhost/dashboard" class="opcion-menu ">Panel General</a>
+
+                <div class="menu-seccion-titulo">Administración</div>
+                <a href="#" class="opcion-menu">Administración de Usuarios</a>
+                   
+                              
+                <div class="menu-seccion-titulo">Gestión Vial</div>
+                <details style="width: 100%;" open>
+                    <summary class="opcion-menu" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+                        <span>UNIDAD DE VIALIDAD</span>
+                        <span style="font-size: 10px; opacity: 0.6;">▼</span>
+                    </summary>
+                    
+                    <!-- Primer Nivel de Desglose -->
+                    <div style="background-color: rgba(0, 0, 0, 0.15); padding-left: 5px;">
+                        
+                        <!-- SUBDESGLOSE INTERNO: TRAZO VIAL (Tiene los 11 pasos adentro) -->
+                        <details style="width: 100%;" open>
+                            <summary class="opcion-menu" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; font-size: 13px; padding: 9px 20px; color: #ffb300; font-weight: 600;">
+                                <span>• Trazo Vial</span>
+                                <span style="font-size: 8px; opacity: 0.8;">▼</span>
+                            </summary>
+                            
+                            <!-- Los 11 Pasos del Flujo Municipal de Trazo Vial -->
+                            <div style="background-color: rgba(0, 0, 0, 0.2); padding-left: 15px; border-left: 2px solid rgba(255, 255, 255, 0.1);">
+                                <a href="http://localhost/vialidad-flujo/bandeja" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.6);">➔ Bandeja Monitoreo</a>
+                                <a href="http://localhost/vialidad-flujo/1-registro" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Descripción General</a>
+                                <a href="http://localhost/vialidad-flujo/2-revision-documental" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Revisión Documental </a>
+                                <a href="http://localhost/vialidad-flujo/3-inspeccion-campo" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Inspección de Campo</a>
+                                <!--  <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">2. Revisión Documental</a> -->
+                                <!--   <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Inspección de Campo</a>-->
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Trabajo de Gabinete</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Proyecto Trazo Vial</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Áreas Verdes y Equip.</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Proyecto Definido</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Nominación Calles</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Actas Conformidad</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Inf. Técnico y V°B°</a>
+                            </div>
+                        </details>
+
+                        <!-- Otras Opciones de la Unidad de Vialidad -->
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Zonificación</a>
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Nominación de Calles</a>
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Amnistía</a>
+                    </div>
+                
+              
+        </nav>
+
+        </nav>
+
+        <!-- ÁREA DE CONTENIDO INTEGRAL -->
+        <main class="contenido-principal">
+            
+<div style="width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 25px;">
+    <!-- CABECERA DE LA BANDEJA -->
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 15px; border-bottom: 2px solid #e2e8f0; padding-bottom: 20px;">
+        <div>
+            <h1 style="font-weight: 700; color: #0f172a; font-size: 26px; letter-spacing: -0.5px; margin: 0;">
+                Bandeja de Monitoreo General
+            </h1>
+            <p style="color: #64748b; font-size: 13.5px; font-weight: 500; margin: 6px 0 0 0;">
+                Unidad de Vialidad | Flujo de Trazo Vial y Zonificación
+            </p>
+        </div>
+        
+        <!-- Botón para iniciar un trámite nuevo desde cero -->
+        <div>
+            <a href="http://localhost/vialidad-flujo/1-registro" style="background-color: #095593; color: #ffffff; text-decoration: none; padding: 11px 20px; font-size: 13.5px; font-weight: 600; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 4px rgba(9, 85, 147, 0.2); transition: background-color 0.2s;">
+                <span>➕</span> Nuevo Trámite (Paso 1)
+            </a>
+        </div>
+    </div>
+
+    <!-- TARJETAS DE ESTADO INTERNO DE LA BANDEJA (Grid formal auto-ajustable) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; width: 100%;">
+        
+        <!-- Tarjeta 1 -->
+        <div style="background-color: #ffffff; border-radius: 8px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; border-left: 4px solid #ffb300; box-sizing: border-box;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">En Ventanilla</div>
+            <div style="font-size: 26px; font-weight: 800; color: #0f172a; margin-top: 6px;">12 Trámites</div>
+        </div>
+        
+        <!-- Tarjeta 2 -->
+        <div style="background-color: #ffffff; border-radius: 8px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; border-left: 4px solid #1a73e8; box-sizing: border-box;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">En Inspección</div>
+            <div style="font-size: 26px; font-weight: 800; color: #0f172a; margin-top: 6px;">8 Activos</div>
+        </div>
+        
+        <!-- Tarjeta 3 -->
+        <div style="background-color: #ffffff; border-radius: 8px; padding: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; border-left: 4px solid #10b981; box-sizing: border-box;">
+            <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;">Listos para Firma</div>
+            <div style="font-size: 26px; font-weight: 800; color: #0f172a; margin-top: 6px;">4 Informes</div>
+        </div>
+    </div>
+
+    <!-- TABLA DE CONTROL DE FLUJO MUNICIPAL -->
+    <div style="width: 100%; background-color: #ffffff; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; box-sizing: border-box;">
+        
+        <div style="width: 100%; overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                <thead>
+                    <tr style="font-size: 11.5px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid #edf2f7; background-color: #f8fafc;">
+                        <th style="padding: 14px 12px;">Código HR</th>
+                        <th style="padding: 14px 12px;">Propietario / Solicitante</th>
+                        <th style="padding: 14px 12px;">Zona / Distrito</th>
+                        <th style="padding: 14px 12px;">Paso Actual del Flujo</th>
+                        <th style="padding: 14px 12px;">Responsable Técnico</th>
+                        <th style="padding: 14px 12px; text-align: center;">Acción</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 14px; color: #334155; font-weight: 500;">
+                    
+                    <!-- Fila Trámite 1 -->
+                    <tr style="border-bottom: 1px solid #edf2f7;">
+                        <td style="padding: 16px 12px; color: #095593; font-weight: 700;">HR-2026-0041</td>
+                        <td style="padding: 16px 12px; color: #0f172a; font-weight: 600;">Alejandro Mamani Quispe</td>
+                        <td style="padding: 16px 12px; color: #64748b;">Villa Adela / Dist. 3</td>
+                        <td style="padding: 16px 12px;">
+                            <span style="background-color: #fef3c7; color: #b45309; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; display: inline-block;">
+                                2. Revisión Documental
+                            </span>
+                        </td>
+                        <td style="padding: 16px 12px; color: #64748b;">Jefe de Unidad</td>
+                        <td style="padding: 16px 12px; text-align: center;">
+                            <a href="http://localhost/vialidad-flujo/2-revision-documental/1" style="background-color: #ffffff; color: #095593; text-decoration: none; padding: 6px 14px; font-size: 12.5px; font-weight: 600; border-radius: 6px; border: 1px solid #095593; display: inline-block; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                                Evaluar ➔
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Fila Trámite 2 -->
+                    <tr style="border-bottom: 1px solid #edf2f7;">
+                        <td style="padding: 16px 12px; color: #095593; font-weight: 700;">HR-2026-0038</td>
+                        <td style="padding: 16px 12px; color: #0f172a; font-weight: 600;">Elena Flores Condori</td>
+                        <td style="padding: 16px 12px; color: #64748b;">Río Seco / Dist. 4</td>
+                        <td style="padding: 16px 12px;">
+                            <span style="background-color: #e0f2fe; color: #0369a1; font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 6px; display: inline-block;">
+                                4. Inspección de Campo
+                            </span>
+                        </td>
+                        <td style="padding: 16px 12px; color: #64748b;">Ing. Marco Ticona</td>
+                        <td style="padding: 16px 12px; text-align: center;">
+                        <a href="http://localhost/vialidad-flujo/3-inspeccion-campo/2" style="background-color: #ffffff; color: #095593; text-decoration: none; padding: 6px 14px; font-size: 12.5px; font-weight: 600; border-radius: 6px; border: 1px solid #095593; display: inline-block; box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+                       Gestionar ➔
+                        </a>
+
+
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- Estilo CSS embebido exclusivo para hacerlo Responsive en Móviles -->
+<style>
+    @media (max-width: 991px) {
+        div[style*="margin-left: 280px"] {
+            margin-left: 0 !important;
+            width: 100% !important;
+            padding: 15px !important;
+        }
+    }
+</style>
+        </main>
+
+    </div>
+
+</body>
+</html>

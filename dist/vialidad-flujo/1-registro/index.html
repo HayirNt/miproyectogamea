@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Integral de Gestión Municipal - GAMEA</title>
+
+    <!-- Enlaces de emergencia de Bootstrap oficiales desde internet -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #f3f4f6 !important;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow-y: auto !important;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor estructural maestro */
+        .pantalla-contenedor {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* MENÚ LATERAL AZUL FIJO */
+        .barra-lateral {
+            width: 260px;
+            min-width: 260px;
+            max-width: 260px;
+            background-color: #003366;
+            color: #ffffff;
+            height: 100vh;
+            position: fixed; /* Clavada en pantalla */
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+        }
+
+        /* CONTENEDOR DE CONTENIDO TOTALMENTE LIBERADO */
+        .contenido-principal {
+         flex-grow: 1;
+         margin-left: 260px; /* Coincide exactamente con el ancho de tu barra lateral */
+         padding: 30px; 
+         min-height: 100vh;
+         box-sizing: border-box;
+         width: calc(100% - 260px);
+         background-color: #f8fafc;
+        }
+
+        /* Estilos del Menú */
+        .menu-seccion-titulo {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 700;
+            padding: 15px 20px 5px 20px;
+        }
+
+        .opcion-menu {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 13.5px;
+            font-weight: 500;
+            padding: 11px 20px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            border-left: 4px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .opcion-menu:hover {
+            color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .opcion-menu.activo {
+            color: #ffffff;
+            background-color: #0b4582;
+            border-left: 4px solid #ffb300;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pantalla-contenedor">
+        
+        <!-- BARRA LATERAL AZUL -->
+        <nav class="barra-lateral">
+            <!-- Logo corporativo -->
+            <div class="p-4" style="display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: #0c437a;">
+    
+    <!-- Espacio para la imagen / escudo -->
+    <img src="http://localhost/img/logo2026.png" style="height: 65px; width: auto; object-fit: contain; flex-shrink: 0;">
+    
+    <!-- Bloque de texto -->
+    <div>
+        <div style="font-size: 10px; color: #ffb300; font-weight: 700; line-height: 1.1;">GOBIERNO AUTÓNOMO MUNICIPAL</div>
+        <div style="font-size: 20px; font-weight: 800; color: #ffffff; margin: 2px 0 0 0; letter-spacing: 0.5px;">EL ALTO</div>
+       
+    </div>
+
+</div>
+<br>
+            <!-- Perfil del Administrador -->
+          
+              <a href="http://localhost/logout" 
+              onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+              class="p-3 m-3 rounded" 
+               style="background-color: rgba(255,255,255,0.05); display: flex; align-items: center; text-decoration: none; cursor: pointer;">
+              
+              <div style="width: 32px; height: 32px; background-color: #ffb300; color: #111827; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 12px; flex-shrink: 0;">
+              AD
+          </div>
+             <div style="margin-left: 10px;">
+        <div style="font-size: 12px; font-weight: 700; color: #ffffff; line-height: 1;">Administrador</div>
+        <span style="font-size: 10px; color: rgba(255,255,255,0.4);">admin@gmail.com</span>
+             </div>
+          </a>
+
+<!-- Formulario oculto obligatorio para Laravel -->
+
+<!-- <form id="logout-form" action="http://localhost/logout" method="POST" style="display: none;">
+    <input type="hidden" name="_token" value="jqzn08B5tdlzIyQ7AOjb8uyUjQgkrZoGUTUoMGyn" autocomplete="off"></form>-->
+
+
+            
+                        <!-- Navegación Estructurada del GAMEA con Desglose -->
+            <div style="padding: 10px 0;">
+                <div class="menu-seccion-titulo">Principal</div>
+                <a href="http://localhost/dashboard" class="opcion-menu ">Panel General</a>
+
+                <div class="menu-seccion-titulo">Administración</div>
+                <a href="#" class="opcion-menu">Administración de Usuarios</a>
+                   
+                              
+                <div class="menu-seccion-titulo">Gestión Vial</div>
+                <details style="width: 100%;" open>
+                    <summary class="opcion-menu" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none;">
+                        <span>UNIDAD DE VIALIDAD</span>
+                        <span style="font-size: 10px; opacity: 0.6;">▼</span>
+                    </summary>
+                    
+                    <!-- Primer Nivel de Desglose -->
+                    <div style="background-color: rgba(0, 0, 0, 0.15); padding-left: 5px;">
+                        
+                        <!-- SUBDESGLOSE INTERNO: TRAZO VIAL (Tiene los 11 pasos adentro) -->
+                        <details style="width: 100%;" open>
+                            <summary class="opcion-menu" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; font-size: 13px; padding: 9px 20px; color: #ffb300; font-weight: 600;">
+                                <span>• Trazo Vial</span>
+                                <span style="font-size: 8px; opacity: 0.8;">▼</span>
+                            </summary>
+                            
+                            <!-- Los 11 Pasos del Flujo Municipal de Trazo Vial -->
+                            <div style="background-color: rgba(0, 0, 0, 0.2); padding-left: 15px; border-left: 2px solid rgba(255, 255, 255, 0.1);">
+                                <a href="http://localhost/vialidad-flujo/bandeja" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.6);">➔ Bandeja Monitoreo</a>
+                                <a href="http://localhost/vialidad-flujo/1-registro" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Descripción General</a>
+                                <a href="http://localhost/vialidad-flujo/2-revision-documental" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Revisión Documental </a>
+                                <a href="http://localhost/vialidad-flujo/3-inspeccion-campo" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Inspección de Campo</a>
+                                <!--  <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">2. Revisión Documental</a> -->
+                                <!--   <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Inspección de Campo</a>-->
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Trabajo de Gabinete</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Proyecto Trazo Vial</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Áreas Verdes y Equip.</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Proyecto Definido</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Nominación Calles</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);">Actas Conformidad</a>
+                                <a href="#" class="opcion-menu" style="font-size: 11.5px; padding: 6px 20px; color: rgba(255,255,255,0.8);"> Inf. Técnico y V°B°</a>
+                            </div>
+                        </details>
+
+                        <!-- Otras Opciones de la Unidad de Vialidad -->
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Zonificación</a>
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Nominación de Calles</a>
+                        <a href="#" class="opcion-menu" style="font-size: 13px; padding: 9px 20px;">• Amnistía</a>
+                    </div>
+                
+              
+        </nav>
+
+        </nav>
+
+        <!-- ÁREA DE CONTENIDO INTEGRAL -->
+        <main class="contenido-principal">
+            <!-- ENCAPSULADOR CORREGIDO: Elimina la altura infinita y ajusta el fondo gris al ras del formulario -->
+<div style="padding: 10px 20px 20px 290px; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background-color: #f3f4f6; height: auto;">
+
+    <!-- CABECERA DE LA PANTALLA -->
+    <div style="width: 100%; display: block; margin-bottom: 5px;">
+        <h1 style="font-weight: 700; color: #1f2937; font-size: 24px; letter-spacing: -0.5px; margin: 0 0 5px 0;">
+            1 Registro de Trámite (Ventanilla)
+        </h1>
+       
+        <a href="http://localhost/vialidad-flujo/bandeja" style="color: #095593; text-decoration: none; font-size: 13px; font-weight: 700; display: inline-block; margin-bottom: 5px;">
+            ⬅️ Volver a la Bandeja
+        </a>
+    </div>
+
+    <!-- CUERPO DEL FORMULARIO EN CAJA BLANCA -->
+    <div style="width: 100%; background-color: #ffffff; border-radius: 8px; padding: 25px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); box-sizing: border-box;">
+        
+        <!-- RUTA CONECTADA AL CONTROLADOR POR POST -->
+        <form action="http://localhost/vialidad-flujo/1-registro/guardar" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+            <input type="hidden" name="_token" value="jqzn08B5tdlzIyQ7AOjb8uyUjQgkrZoGUTUoMGyn" autocomplete="off">
+            <!-- SECCIÓN 1: DATOS DEL SOLICITANTE -->
+            <div style="width: 100%;">
+                <h3 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 700; color: #095593; text-transform: uppercase; border-bottom: 2px solid #f3f4f6; padding-bottom: 6px; letter-spacing: 0.5px;">
+                    Datos del Solicitante
+                </h3>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 15px;">
+                    <div style="flex: 2; min-width: 240px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Nombre / Razón Social</label>
+                        <!-- SE AÑADIÓ EL ATRIBUTO NAME -->
+                        <input type="text" name="solicitante" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; color: #111827; font-weight: 600;" value="Juan Pérez Gómez" required>
+                    </div>
+                    <div style="flex: 1; min-width: 140px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">C.I. / NIT</label>
+                        <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; color: #111827; font-weight: 600;" value="1234567 LP" required>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 15px;">
+                    <div style="flex: 1; min-width: 140px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Teléfono / Celular</label>
+                        <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="78912345">
+                    </div>
+                    <div style="flex: 1; min-width: 200px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Correo Electrónico</label>
+                        <input type="email" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="juan.perez@gmail.com">
+                    </div>
+                </div>
+
+                <div style="width: 100%;">
+                    <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Dirección</label>
+                    <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="Av. Principal #123, Zona Central">
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: DATOS DEL PREDIO / LOTE -->
+            <div style="width: 100%; margin-top: 5px;">
+                <h3 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 700; color: #095593; text-transform: uppercase; border-bottom: 2px solid #f3f4f6; padding-bottom: 6px; letter-spacing: 0.5px;">
+                    Datos del Predio / Lote
+                </h3>
+                
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%; margin-bottom: 15px;">
+                    <div style="flex: 2; min-width: 200px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Urbanización / Zona</label>
+                        <!-- SE AÑADIÓ EL ATRIBUTO NAME -->
+                        <input type="text" name="urbanizacion" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; color: #111827; font-weight: 600;" value="Villa Victoria" required>
+                    </div>
+                    <div style="flex: 1; min-width: 100px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Manzana</label>
+                        <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="M-12">
+                    </div>
+                    <div style="flex: 1; min-width: 100px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Lote</label>
+                        <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="5">
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; width: 100%;">
+                    <div style="flex: 1; min-width: 140px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Superficie (m²)</label>
+                        <!-- SE AÑADIÓ EL ATRIBUTO NAME Y SE ELIMINÓ EL TEXTO 'm²' DEL VALUE PARA ENVIAR SOLO EL NÚMERO -->
+                        <input type="number" step="0.01" name="superficie" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box; color: #111827; font-weight: 700;" value="350.00">
+                    </div>
+                    <div style="flex: 2; min-width: 220px;">
+                        <label style="display: block; font-size: 11.5px; font-weight: 700; color: #4b5563; margin-bottom: 6px;">Referencia / Observaciones</label>
+                        <input type="text" style="width: 100%; padding: 9px; font-size: 13.5px; border: 1px solid #d1d5db; border-radius: 6px; box-sizing: border-box;" value="Frente a la plaza principal, a una cuadra del colegio.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: DOCUMENTOS ADJUNTOS -->
+                   
+                     <div style="width: 100%; margin-top: 5px;">
+                <h3 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 700; color: #095593; text-transform: uppercase; border-bottom: 2px solid #f3f4f6; padding-bottom: 6px; letter-spacing: 0.5px;">
+                    Documentos Adjuntos
+                </h3>
+                
+                <div style="background-color: #f9fafb; border: 2px dashed #cbd5e1; border-radius: 6px; padding: 20px; text-align: center; color: #6b7280; font-size: 13px; cursor: pointer; margin-bottom: 15px; width: 100%; box-sizing: border-box;">
+                    <span style="font-size: 18px; display: block; margin-bottom: 5px;">📁</span>
+                    <strong>Arrastre archivos aquí o haga clic para seleccionar</strong>
+                    <div style="font-size: 11px; color: #9ca3af; margin-top: 4px;">Formatos permitidos: PDF, JPG, PNG (Máx. 10MB)</div>
+                </div>
+                
+                <!-- Lista de archivos cargados -->
+                <div style="display: flex; flex-direction: column; gap: 8px; width: 100%; box-sizing: border-box; margin-bottom: 20px;">
+                    <div style="background-color: #f8fafc; border-left: 4px solid #10b981; padding: 10px 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span style="font-weight: 600; color: #374151;">📄 Solicitud.pdf</span>
+                        <span style="color: #10b981; font-weight: 700; font-size: 11px;">✔️ CARGADO</span>
+                    </div>
+                    <div style="background-color: #f8fafc; border-left: 4px solid #10b981; padding: 10px 15px; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; font-size: 13px;">
+                        <span style="font-weight: 600; color: #374151;">📄 Croquis del Terreno.pdf</span>
+                        <span style="color: #10b981; font-weight: 700; font-size: 11px;">✔️ CARGADO</span>
+                    </div>
+                </div>
+            </div> 
+
+         
+            <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; padding-top: 15px; border-top: 1px solid #f3f4f6; box-sizing: border-box; width: 100%;">
+                
+                <a href="http://localhost/vialidad-flujo/bandeja" style="background-color: #e5e7eb; color: #374151; text-decoration: none; padding: 9px 20px; font-size: 13px; font-weight: 600; border-radius: 6px; display: inline-flex; align-items: center; height: 38px; box-sizing: border-box;">
+                    Cancelar
+                </a>
+
+                <button type="submit" style="background-color: #0056b3; color: #ffffff; padding: 9px 20px; font-size: 13px; font-weight: 600; border-radius: 6px; display: inline-flex; align-items: center; border: none; cursor: pointer; height: 38px; box-sizing: border-box;">
+                    Registrar Trámite
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>
+        </main>
+
+    </div>
+
+</body>
+</html>

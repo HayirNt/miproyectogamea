@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcaldía Digital - Inicio de Sesión</title>
+
+    <style>
+        /* --- ESTILOS NATIVOS DE EMERGENCIA (Reemplazan a Bootstrap) --- */
+        body { 
+            background-color: #0b3a6d; 
+            min-height: 100vh; 
+            margin: 0;
+            padding: 0;
+            position: relative; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Franja amarilla institucional */
+        body::before { 
+            content: ""; 
+            position: absolute; 
+            top: 45%; 
+            left: -10%; 
+            width: 120%; 
+            height: 45px; 
+            background-color: #dfaa20; 
+            transform: rotate(-15deg); 
+            z-index: 1; 
+        }
+        
+        .login-container { 
+            position: relative; 
+            z-index: 2; 
+            max-width: 400px; 
+            width: 90%; 
+            text-align: center;
+        }
+        
+        .header-title { 
+            font-weight: 800; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+            color: #ffffff;
+            margin: 0 0 5px 0;
+            font-size: 28px;
+        }
+        
+        .badge-bienestar { 
+            font-size: 11px; 
+            font-weight: 600; 
+            letter-spacing: 1px; 
+            border-top: 2px solid #e24a25; 
+            padding-top: 5px; 
+            display: inline-block; 
+            color: #ffffff;
+        }
+
+        /* Caja blanca central */
+        .card-custom {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #1f2937;
+            margin: 0 0 5px 0;
+            text-align: center;
+        }
+
+        .card-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            margin: 0 0 25px 0;
+            text-align: center;
+        }
+
+        /* Campos de Entrada (Inputs) */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            color: #4b5563;
+            margin-bottom: 6px;
+        }
+
+        .input-custom {
+            width: 100%;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box;
+            color: #374151;
+            background-color: #f9fafb;
+        }
+
+        .input-custom:focus {
+            outline: none;
+            border-color: #0b3a6d;
+            background-color: #ffffff;
+        }
+
+        /* Opciones extras y Botón */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            margin-bottom: 25px;
+        }
+
+        .btn-custom-blue { 
+            width: 100%;
+            background-color: #095593; 
+            color: white; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            font-size: 14px; 
+            padding: 12px;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: background-color 0.2s;
+        }
+        
+        .btn-custom-blue:hover { 
+            background-color: #063e6d; 
+        }
+
+        .footer-text {
+            position: absolute; 
+            bottom: 0; 
+            text-align: center; 
+            color: rgba(255,255,255,0.6); 
+            font-size: 11px; 
+            width: 100%; 
+            padding-bottom: 15px;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <div class="text-white">
+        <!-- Logo de la Alcaldía -->
+        <img src="/img/logo.png" alt="Logo El Alto" style="max-height: 85px; width: auto; margin-bottom: 10px;">
+        <div style="font-size: 11px; text-transform: uppercase; opacity: 0.8; color: #ffffff;">Gobierno Autónomo Municipal de</div>
+        <h1 class="header-title">El Alto</h1>
+        <div class="badge-bienestar">TRABAJAMOS POR TU BIENESTAR</div>
+    </div>
+
+    <!-- Caja del Formulario Asegurada -->
+    <div class="card-custom">
+        <h2 class="card-title">Inicio de Sesión</h2>
+        <p class="card-subtitle">Portal Ciudadano Digital</p>
+
+                <!-- FORMULARIO  PARA GITHUB  -->
+                <div>
+            <div class="form-group">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" name="email" id="email" class="input-custom" value="admin@gmail.com" required autofocus>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" name="password" id="password" class="input-custom" placeholder="Ingrese su contraseña" required>
+            </div>
+
+            <div class="flex-container">
+                <label style="color: #6b7280; cursor: pointer;">
+                    <input type="checkbox" name="remember" id="remember" style="vertical-align: middle; margin-right: 4px;"> Recordarme
+                </label>
+                <a href="#" style="text-decoration: none; font-weight: 700; color: #0b3a6d;">¿Olvidó su contraseña?</a>
+            </div>
+
+            <!-- Aquí convertimos el botón en un enlace directo al Dashboard -->
+            <a href="{{ url('/dashboard') }}" class="btn-custom-blue" style="text-align: center; text-decoration: none; display: block; box-sizing: border-box;">Ingresar al Sistema</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="footer-text">
+    Alcaldía Digital de El Alto | © 2026. Todos los derechos reservados.
+</div>
+
+</body>
+</html>
